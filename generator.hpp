@@ -23,7 +23,7 @@ private:
     int row;
     int col;
     
-    char **maze;
+    char **map;
 };
 
 #endif /* GENERATOR_HPP_ */
