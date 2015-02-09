@@ -17,13 +17,6 @@ public:
     
     // Fill the map (which was allocated in the constructor)
     virtual void makeMap(int row_size, int col_size) = 0;
-    
-private:
-    //the dimensions of the map
-    int row;
-    int col;
-    
-    char **map;
 };
 
 #endif /* GENERATOR_HPP_ */
