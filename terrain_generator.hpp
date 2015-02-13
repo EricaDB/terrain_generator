@@ -9,13 +9,14 @@
 
 class TerrainGenerator : public Generator {
 public:
-    TerrainGenerator();
+    TerrainGenerator(int row, int col);
     virtual ~TerrainGenerator();
     virtual void makeMap(int row_size, int col_size);
     
     // print out the map (for debugging)
     void printMap();
-    
+    char **getMap();    
+
 private:
     //the dimensions of the map
     int row;

@@ -2,11 +2,12 @@
  * terrain_generator.cpp
  */
 
-include "generator.hpp"
-include "terrain_generator.hpp"
+#include "generator.hpp"
+#include "terrain_generator.hpp"
 
 // Constructor, initialize variables and allocate memory for map
-TerrainGenerator::TerrainGenerator(int row, int col) : Generator(), mountain("^"), water("~"), valley(".") {
+TerrainGenerator::TerrainGenerator(int row, int col) : 
+  Generator(), mountain('^'), water('~'), valley('.') {
     this->row = row;
     this->col = col;
     this->map = new char*[row];
@@ -24,4 +25,11 @@ TerrainGenerator::~TerrainGenerator() {
         delete []this->map[i];
     }
     delete []this->map;
+}
+
+void TerrainGenerator::makeMap(int row, int col) {
+}
+
+char **TerrainGenerator::getMap() {
+  return this->map;
 }
