@@ -11,7 +11,7 @@ class TerrainGenerator : public Generator {
 public:
     TerrainGenerator(int row, int col);
     virtual ~TerrainGenerator();
-    virtual void makeMap(int row_size, int col_size);
+    virtual void makeMap();
     
     // print out the map (for debugging)
     void printMap();

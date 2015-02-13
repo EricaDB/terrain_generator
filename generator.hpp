@@ -16,7 +16,7 @@ public:
     ~Generator() {}
     
     // Fill the map (which was allocated in the constructor)
-    virtual void makeMap(int row_size, int col_size) = 0;
+    virtual void makeMap() = 0;
 };
 
 #endif /* GENERATOR_HPP_ */
