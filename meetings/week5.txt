@@ -1,0 +1,13 @@
+Week 5 meeting 2/6/15
+
+Attendants: 
+   Erica Johnson, Sage Berg, Nathan Pointer
+
+Summary:
+    - First meeting, discussed creating the project iteratively (meaning 
+      we always have a working full project but build it up over time, etc.)
+    - Task delegation (Erica makes the repo, Sage and Erica will work on a 
+      starting version of generator files, Nathan will work on creating view 
+      programs, etc.)
+
+Approximate duration: ~ 20 - 30 min.
