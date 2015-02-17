@@ -3,8 +3,8 @@
 #include <iostream>
 
 int main() {
-  TerrainGenerator tg(80, 80);
-  tg.makeMap();
-  tg.printMap();
-  return 0;
+    TerrainGenerator tg(30, 30);
+    tg.makeMap();
+    tg.printMap();
+    return 0;
 }
