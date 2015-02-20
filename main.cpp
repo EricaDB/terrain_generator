@@ -4,7 +4,7 @@
 #include <iostream>
 
 int main(int argc, const char *argv[]) {
-    TerrainGenerator tg(80, 80);
+    TerrainGenerator tg(30, 30);
     tg.makeMap();
     tg.printMap();
     CaveGenerator cg(40, 40);
