@@ -1,0 +1,17 @@
+Week 7 meeting 2/20/15
+
+Attendants: 
+   Erica Johnson, Sage Berg, Nathan Pointer
+
+Summary:
+    - Delegated tasks to complete/work on before next meeting.
+        - Nathan will continue work on the views programs for visualizing our 
+          generated maps.
+	- Sage will continue work on the terrain_generator algorithm for generating 
+	  realistic terrain maps. Also, will work on putting in tile objects to fill
+          the maps instead of characters.
+	- Erica will improve the cave generator. Also, will work on putting in tile  
+          objects to fill the maps instead of characters.
+    - Discussed our timeline for completion of the project
+
+Approximate duration: ~ 20 - 30 min
