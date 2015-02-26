@@ -7,7 +7,7 @@ CXXFLAGS = -g -std=c++0x
 all: viewTest 
 
 HTML_OBJECTS = viewTest.o html.o
-main: $(HTML_OBJECTS)
+viewTest: $(HTML_OBJECTS)
 	$(CXX) -o $@ $(HTML_OBJECTS)
 
 clean: 

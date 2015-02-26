@@ -21,10 +21,10 @@ int main(){
 	// for(int i=0; i<5; i++){
 	// 	body += to_string(foo[i]);
 	// }
-
+    
 	Html hyper;
 
-	char arr[100][100] = {{'^', '.', '.'},{'^', '.', ' '},{'^', '.', ' '}};
+	char arr[100][100] = {{'.', '.', '.'},{'^', '.', ' '},{'^', '.', ' '}};
 
 	body += hyper.arrayToTable(3, arr);
 
