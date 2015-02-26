@@ -43,10 +43,8 @@ void CaveGenerator::recursiveGen(int row, int col, int cavern_len, int cavern_wi
             if (i > 0) {
                 for (int j = col; j < col + cave_width(mt); j++) {
                     if ((j < this->col - 1) && (i > 0)) {
-                        //i = i + angle(mt); // does this mess up the for loop?
-                        j = j + angle(mt); // ??
-                        std::cout << "i " << i << std::endl;
-                        std::cout << "      j " << j << std::endl;
+                        //i = i + angle(mt);
+                        j = j + angle(mt); 
                         this->map[i][j] = this->air;
                         if (new_cave_chance(mt) == 1 && max_rec > 0) {
                             max_rec -= 1;
