@@ -7,6 +7,7 @@
 
 #include "generator.hpp"
 #include <random>
+#include "tile.hpp"
 
 class CaveGenerator : public Generator {
 public:
@@ -20,19 +21,20 @@ public:
     
     // print out the map (for debugging)
     void printMap();
-    char **getMap();
+    
+    Tile **getMap();
     
 private:
     //the dimensions of the map
     int row;
     int col;
     
-    char **map;
+    Tile **map;
     enum Direction dir;
     
-    // characters for terrain features
-    char air;
-    char wall;
+    // Tiles for terrain features
+    Tile air;
+    Tile wall;
     // gems?
 };
 
