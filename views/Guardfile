@@ -1,0 +1,9 @@
+guard 'livereload' do
+  watch(%r{.+\.html})
+end
+
+guard :shell do
+  watch /.+.(cpp|hpp)/ do |m|
+    `g++ *.cpp -o output; ./output;`
+  end
+end
