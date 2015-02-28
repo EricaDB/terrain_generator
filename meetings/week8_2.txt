@@ -1,0 +1,18 @@
+Week 8 meeting 2 2/28/15
+
+Attendants: 
+   Erica Johnson, Sage Berg, Nathan Pointer
+
+Summary:
+    - Discussed what we will each work on before next meeting.
+        - Nathan will continue work on the Node.js plugin for visualizing our 
+          generated maps. Also an alternate format for JSON.
+	- Sage will continue work on smoothing out the terrain_generator algorithm for
+          generating realistic terrain maps. Also, will work on a diamond squares 
+          algorithm terrain_generator with the tile objects.
+	- Erica will work on the cave_generator more, maybe adding in gem tiles with
+          the rock and air tiles. Also will work more on the tile object class.
+    - Discussed a mouse-over aspect to include in the final project where you can mouse
+      over parts of the map to see more information about the map (like the type of tile).
+
+Approximate duration: ~ 20 - 30 min
