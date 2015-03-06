@@ -21,7 +21,7 @@ int main(){
 	// for(int i=0; i<5; i++){
 	// 	body += to_string(foo[i]);
 	// }
-
+    
 	Html hyper;
 
 	char arr[100][100] = {{'.', '.', '.'},{'^', '.', ' '},{'^', '.', ' '}};

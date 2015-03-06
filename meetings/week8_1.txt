@@ -1,0 +1,12 @@
+Week 8 meeting 1 2/26/15
+
+Attendants: 
+   Erica Johnson, Sage Berg, Nathan Pointer
+
+Summary:
+    - Discussed creating the Tile class for filling the map 
+      matrices. Made sure using tile objects instead of characters
+      to fill the maps will work with the view/display part of the
+      project.
+
+Approximate duration: ~ 10 - 20 min
