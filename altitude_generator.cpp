@@ -12,9 +12,7 @@
 AltitudeGenerator::AltitudeGenerator(int row, int col) :
 Generator(), row(row), col(col) {
     this->water.setType("water");
-    this->water.setAltitude(0);
     this->land.setType("land");
-    this->land.setAltitude(0);
     this->map = new Tile*[row];
     for (int i = 0; i < row; i++) {
         this->map[i] = new Tile[col];
