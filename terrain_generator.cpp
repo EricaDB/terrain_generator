@@ -34,40 +34,42 @@ TerrainGenerator::~TerrainGenerator() {
 }
 
 void TerrainGenerator::makeMap() {
-    for (int r = 0; r < this->row; r++) {
+    std::tuple<int, int> *coords_arr= getArrayOfRandomCoords();
+    int r, c;
+    for (int a = 0; a < this->row * this->col - 1; a++) {
+        r = std::get<0>(coords_arr[a]);
+        c = std::get<1>(coords_arr[a]);
         Raffle raffle;
-        raffle.put(' ', 1);
-        raffle.put('.', 30);
-        raffle.put('^', 20);
-        for (int c = 0; c < this->col; c++) {
-            if (r > 0) {
-                raffle.put(this->map[r - 1][c], 1);
-                if (c > 0) {
-                    raffle.put(this->map[r - 1][c - 1], 1);
-                }
-                if (c + 1 < this->col) {
-                    raffle.put(this->map[r - 1][c + 1], 1);
-                }
-            }
+        raffle.put('.', 15);
+        raffle.put(' ', 10);
+        raffle.put('^', 5);
+        if (r > 0) {
+            raffle.put(this->map[r - 1][c], 1);
             if (c > 0) {
-                raffle.put(this->map[r][c - 1], 1);
+                raffle.put(this->map[r - 1][c - 1], 1);
             }
             if (c + 1 < this->col) {
-                raffle.put(this->map[r][c + 1], 1);
+                raffle.put(this->map[r - 1][c + 1], 1);
             }
-            if (r + 1 < this->row) {
-                raffle.put(this->map[r + 1][c], 1);
-                if (c > 0) {
-                    raffle.put(this->map[r + 1][c - 1], 1);
-                }
-                if (c + 1 < this->col) {
-                    raffle.put(this->map[r + 1][c + 1], 1);
-                }
-            }
-            char terrain_symbol = raffle.get();
-                  terrain_symbol = raffle.get();
-            this->map[r][c] = terrain_symbol;
         }
+        if (c > 0) {
+            raffle.put(this->map[r][c - 1], 1);
+        }
+        if (c + 1 < this->col) {
+            raffle.put(this->map[r][c + 1], 1);
+        }
+        if (r + 1 < this->row) {
+            raffle.put(this->map[r + 1][c], 1);
+            if (c > 0) {
+                raffle.put(this->map[r + 1][c - 1], 1);
+            }
+            if (c + 1 < this->col) {
+                raffle.put(this->map[r + 1][c + 1], 1);
+            }
+        }
+        char terrain_symbol = raffle.get();
+              terrain_symbol = raffle.get();
+        this->map[r][c] = terrain_symbol;
     }
 }
 

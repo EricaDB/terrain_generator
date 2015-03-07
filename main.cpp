@@ -8,7 +8,6 @@
 int main(int argc, const char *argv[]) {
     int tg_size = 20; // take this as user input later
     TerrainGenerator tg(tg_size, tg_size);
-    tg.printMap();
     tg.smoothMap();
     tg.printMap();
     ArgHtml html;
