@@ -34,8 +34,10 @@ private:
     
     // Tiles for terrain features
     Tile air;
-    Tile wall;
-    // gems?
+    Tile rock;
+    Tile ruby;
+    Tile emerald;
+    Tile diamond;
 };
 
 #endif /* CAVE_GENERATOR_HPP_ */

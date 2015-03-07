@@ -15,15 +15,18 @@
 // Constructor, initialize variables and allocate memory for map
 CaveGenerator::CaveGenerator(int row, int col) :
 Generator(), dir(DOWN) {
-    this->air.setType("air"); // to make the cave more readable for printMap() change "air" to an empty string
-    this->wall.setType("rock");
+    this->air.setType("air");
+    this->rock.setType("rock");
+    this->ruby.setType("ruby");
+    this->emerald.setType("emerald");
+    this->diamond.setType("diamond");
     
     this->row = row;
     this->col = col;
     this->map = new Tile*[row];
     for (int i = 0; i < row; i++) {
         this->map[i] = new Tile[col];
-        std::fill(this->map[i], this->map[i] + col, this->wall);
+        std::fill(this->map[i], this->map[i] + col, this->rock);
     }
     makeMap();
 }
@@ -161,12 +164,32 @@ void CaveGenerator::makeMap() {
     recursiveGen(start_row(mt), start_col(mt), len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, 7);
     recursiveGen(start_row(mt), start_col(mt), len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, 7);
     recursiveGen(start_row(mt), start_col(mt), len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, 7);
+    
+    // chance to generate each gem tile
+    std::uniform_int_distribution<int> ruby_chance(0, 49);
+    std::uniform_int_distribution<int> emerald_chance(0, 74);
+    std::uniform_int_distribution<int> diamond_chance(0, 99);
+    
+    // fill cave with some gems
+    for (int i = 0; i < this->row - 1; i++) {
+        for (int j = 0; j < this->col - 1; j++) {
+            if (this->map[i][j].getType() == "rock") {
+                if (diamond_chance(mt) == 0) {
+                    this->map[i][j] = this->diamond;
+                } else if (emerald_chance(mt) == 0) {
+                    this->map[i][j] = this->emerald;
+                } else if (ruby_chance(mt) == 0) {
+                    this->map[i][j] = this->ruby;
+                }
+            }
+        }
+    }
 }
 
 void CaveGenerator::printMap() {
     for (int r = 0; r < this->row; r++) {
         for (int c = 0; c < this->col; c++) {
-            std::cout << std::setw(4) << std::left << this->map[r][c].getType();
+            std::cout << std::setw(4) << std::left << this->map[r][c].getType().substr(0, 4);
         }
         std::cout << std::endl;
     }
