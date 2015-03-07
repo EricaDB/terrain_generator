@@ -1,4 +1,4 @@
-#include "views/arg_html.hpp"
+#include "arg_html.hpp"
 #include "generator.hpp"
 #include "terrain_generator.hpp"
 #include "cave_generator.hpp"
@@ -6,7 +6,7 @@
 #include <iostream>
 
 int main(int argc, const char *argv[]) {
-    int tg_size = 20; // take this as user input later
+    int tg_size = 50; // take this as user input later
     TerrainGenerator tg(tg_size, tg_size);
     tg.smoothMap();
     tg.printMap();
