@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -g -std=c++0x -I views
+CXXFLAGS = -g -std=c++0x
 
 %.o: %.cpp
 	$(CXX) -c $(CXXFLAGS) $<
