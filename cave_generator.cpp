@@ -25,6 +25,7 @@ Generator(), dir(DOWN) {
         this->map[i] = new Tile[col];
         std::fill(this->map[i], this->map[i] + col, this->wall);
     }
+    makeMap();
 }
 
 // Destructor, free the map memory
