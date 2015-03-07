@@ -17,6 +17,7 @@ public:
     // print out the map (for debugging)
     void printMap();
     char **getMap();    
+    std::tuple<int, int> *getArrayOfRandomCoords();
 
 private:
     //the dimensions of the map

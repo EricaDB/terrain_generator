@@ -75,16 +75,7 @@ void TerrainGenerator::smoothMap() {
     std::map<char, int> majority;
     int max;
     char max_char;
-    std::tuple<int, int> coords_arr[this->row * this->col];
-    int i = 0;
-    for (int r = 0; r < this->row; r++) {
-        for (int c = 0; c < this->col; c++) {
-            std::tuple<int, int> coords (r, c);
-            coords_arr[i] = coords;
-            i++;
-        }
-    }
-    random_shuffle(&coords_arr[0], &coords_arr[this->row * this->col- 1]);
+    std::tuple<int, int> *coords_arr= getArrayOfRandomCoords();
     int r, c;
     //for (int r = 0; r < this->row; r++) {
         //for (int c = 0; c < this->col; c++) {
@@ -148,4 +139,21 @@ void TerrainGenerator::printMap() {
 
 char **TerrainGenerator::getMap() {
   return this->map;
+}
+
+//helper function
+std::tuple<int, int> *TerrainGenerator::getArrayOfRandomCoords() {
+    //std::tuple<int, int> coords_arr[this->row * this->col];
+    std::tuple<int, int> *coords_arr = 
+        new std::tuple<int, int>[this->row * this->col];
+    int i = 0;
+    for (int r = 0; r < this->row; r++) {
+        for (int c = 0; c < this->col; c++) {
+            std::tuple<int, int> coords (r, c);
+            coords_arr[i] = coords;
+            i++;
+        }
+    }
+    random_shuffle(&coords_arr[0], &coords_arr[this->row * this->col- 1]);
+    return coords_arr;
 }
