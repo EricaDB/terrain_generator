@@ -6,6 +6,7 @@
 #include <iostream>
 #include <algorithm>  // to fill arrays with characters
 #include <map>
+#include <tuple>
 
 #include "raffle.hpp" 
 #include "generator.hpp"
@@ -74,55 +75,67 @@ void TerrainGenerator::smoothMap() {
     std::map<char, int> majority;
     int max;
     char max_char;
+    std::tuple<int, int> coords_arr[this->row * this->col];
+    int i = 0;
     for (int r = 0; r < this->row; r++) {
         for (int c = 0; c < this->col; c++) {
-            majority[' '] = 0;
-            majority['.'] = 0;
-            majority['^'] = 0; //hard coded, make dynamic ??
-            //clear out the map each time
+            std::tuple<int, int> coords (r, c);
+            coords_arr[i] = coords;
+            i++;
+        }
+    }
+    random_shuffle(&coords_arr[0], &coords_arr[this->row * this->col- 1]);
+    int r, c;
+    //for (int r = 0; r < this->row; r++) {
+        //for (int c = 0; c < this->col; c++) {
+    for (int a = 0; a < this->row * this->col - 1; a++) {
+        r = std::get<0>(coords_arr[a]);
+        c = std::get<1>(coords_arr[a]);
+        majority[' '] = 0;
+        majority['.'] = 0;
+        majority['^'] = 0; //hard coded, make dynamic ??
+        //clear out the map each time
 
-            if (r > 0) {
-                majority[this->map[r - 1][c]] += 1;  
-                if (c > 0) {
-                    majority[this->map[r - 1][c - 1]] += 1;  
-                }
-                if (c + 1 < this->col) {
-                    majority[this->map[r - 1][c + 1]] += 1;  
-                }
-            }
+        if (r > 0) {
+            majority[this->map[r - 1][c]] += 1;  
             if (c > 0) {
-                majority[this->map[r][c - 1]] += 1;  
+                majority[this->map[r - 1][c - 1]] += 1;  
             }
             if (c + 1 < this->col) {
-                majority[this->map[r][c + 1]] += 1;  
+                majority[this->map[r - 1][c + 1]] += 1;  
             }
-            if (r + 1 < this->row) {
-                if (c > 0) {
-                    majority[this->map[r + 1][c - 1]] += 1;  
-                }
-                if (c + 1 < this->col) {
-                    majority[this->map[r + 1][c + 1]] += 1;  
-                }
+        }
+        if (c > 0) {
+            majority[this->map[r][c - 1]] += 1;  
+        }
+        if (c + 1 < this->col) {
+            majority[this->map[r][c + 1]] += 1;  
+        }
+        if (r + 1 < this->row) {
+            if (c > 0) {
+                majority[this->map[r + 1][c - 1]] += 1;  
             }
-            //find the char with the biggest count and set
-            //the current char to be that char
-            max = 0;
-            max_char;
-            for (auto iterator = majority.begin();
-                 iterator != majority.end();
-                 iterator++) {
-                if (iterator->second > max) {
-                  max = iterator->second;
-                  max_char = iterator->first;
-                }
+            if (c + 1 < this->col) {
+                majority[this->map[r + 1][c + 1]] += 1;  
             }
-            if (max_char) {
-              this->map[r][c] = max_char;
+        }
+        //find the char with the biggest count and set
+        //the current char to be that char
+        max = 0;
+        max_char;
+        for (auto iterator = majority.begin();
+             iterator != majority.end();
+             iterator++) {
+            if (iterator->second > max) {
+              max = iterator->second;
+              max_char = iterator->first;
             }
-        } 
+        }
+        if (max_char) {
+            this->map[r][c] = max_char;
+        }
     }
 }
-
 
 void TerrainGenerator::printMap() {
     for (int r = 0; r < this->row; r++) {
