@@ -12,7 +12,8 @@ public:
     TerrainGenerator(int row, int col);
     virtual ~TerrainGenerator();
     virtual void makeMap();
-    
+    virtual void smoothMap();
+
     // print out the map (for debugging)
     void printMap();
     char **getMap();    

@@ -5,6 +5,7 @@
 #include <random>
 #include <iostream>
 #include <algorithm>  // to fill arrays with characters
+#include <map>
 
 #include "raffle.hpp" 
 #include "generator.hpp"
@@ -20,6 +21,7 @@ TerrainGenerator::TerrainGenerator(int row, int col) :
         this->map[i] = new char[col];
         std::fill(this->map[i], this->map[i] + col, ' ');
     }
+    makeMap();
 }
 
 // Destructor, free the map memory
@@ -34,8 +36,8 @@ void TerrainGenerator::makeMap() {
     for (int r = 0; r < this->row; r++) {
         Raffle raffle;
         raffle.put(' ', 1);
-        raffle.put('.', 10);
-        raffle.put('^', 1);
+        raffle.put('.', 30);
+        raffle.put('^', 20);
         for (int c = 0; c < this->col; c++) {
             if (r > 0) {
                 raffle.put(this->map[r - 1][c], 1);
@@ -67,6 +69,60 @@ void TerrainGenerator::makeMap() {
         }
     }
 }
+
+void TerrainGenerator::smoothMap() {
+    std::map<char, int> majority;
+    int max;
+    char max_char;
+    for (int r = 0; r < this->row; r++) {
+        for (int c = 0; c < this->col; c++) {
+            majority[' '] = 0;
+            majority['.'] = 0;
+            majority['^'] = 0; //hard coded, make dynamic ??
+            //clear out the map each time
+
+            if (r > 0) {
+                majority[this->map[r - 1][c]] += 1;  
+                if (c > 0) {
+                    majority[this->map[r - 1][c - 1]] += 1;  
+                }
+                if (c + 1 < this->col) {
+                    majority[this->map[r - 1][c + 1]] += 1;  
+                }
+            }
+            if (c > 0) {
+                majority[this->map[r][c - 1]] += 1;  
+            }
+            if (c + 1 < this->col) {
+                majority[this->map[r][c + 1]] += 1;  
+            }
+            if (r + 1 < this->row) {
+                if (c > 0) {
+                    majority[this->map[r + 1][c - 1]] += 1;  
+                }
+                if (c + 1 < this->col) {
+                    majority[this->map[r + 1][c + 1]] += 1;  
+                }
+            }
+            //find the char with the biggest count and set
+            //the current char to be that char
+            max = 0;
+            max_char;
+            for (auto iterator = majority.begin();
+                 iterator != majority.end();
+                 iterator++) {
+                if (iterator->second > max) {
+                  max = iterator->second;
+                  max_char = iterator->first;
+                }
+            }
+            if (max_char) {
+              this->map[r][c] = max_char;
+            }
+        } 
+    }
+}
+
 
 void TerrainGenerator::printMap() {
     for (int r = 0; r < this->row; r++) {

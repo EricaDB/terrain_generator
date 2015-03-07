@@ -2,12 +2,14 @@
 #include "generator.hpp"
 #include "terrain_generator.hpp"
 #include "cave_generator.hpp"
+
 #include <iostream>
 
 int main(int argc, const char *argv[]) {
-    int tg_size = 30; // take this as user input later
+    int tg_size = 20; // take this as user input later
     TerrainGenerator tg(tg_size, tg_size);
-    tg.makeMap();
+    tg.printMap();
+    tg.smoothMap();
     tg.printMap();
     ArgHtml html;
     char **map = tg.getMap();
