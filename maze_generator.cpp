@@ -36,7 +36,7 @@ MazeGenerator::~MazeGenerator() {
 }
 
 void MazeGenerator::makeMap() {
-    buildPath(1, 1); // build first path coords 2, 2
+    buildDoublePath(1, 1); // build first path coords 1, 1
     //create an entrance
     this->map[1][0].setType("path"); 
     //create an exit
@@ -48,6 +48,7 @@ int myrandom (int i) {
     return std::rand() % i; 
 }
 
+//builds maze, drawback: no guaranteed exit
 void MazeGenerator::buildPath(int r, int c) {
     this->map[r][c].setType("path");
     std::vector<std::string> dirs = {"UP", "DOWN", "LEFT", "RIGHT"};
@@ -67,6 +68,39 @@ void MazeGenerator::buildPath(int r, int c) {
             else if (dirs[i] == "RIGHT" && canBuildPath(r, c + 1, "RIGHT")) {
                 buildPath(r, c + 1);
             }
+        }
+    }
+}
+
+//builds maze, drawback: only looks good if cave has dimensions of odd number
+void MazeGenerator::buildDoublePath(int r, int c) {
+    this->map[r][c].setType("path");
+    std::vector<std::string> dirs = {"UP", "DOWN", "LEFT", "RIGHT"};
+    random_shuffle(dirs.begin(), dirs.end(), myrandom); 
+    for (int i = 0; i < 4; i++) {
+        if (dirs[i] == "UP" && r > 1 
+            && canBuildPath(r - 1, c, "UP")
+            && canBuildPath(r - 2, c, "UP")) {
+            this->map[r - 1][c].setType("path");  
+            buildDoublePath(r - 2, c);
+        }
+        else if (dirs[i] == "DOWN" && r < this->row - 1
+                 && canBuildPath(r + 1, c, "DOWN") 
+                 && canBuildPath(r + 2, c, "DOWN")) {
+            this->map[r + 1][c].setType("path");
+            buildDoublePath(r + 2, c);
+        }
+        else if (dirs[i] == "LEFT" && c > 1 
+                 && canBuildPath(r, c - 1, "LEFT")
+                 && canBuildPath(r, c - 2, "LEFT")) {
+            this->map[r][c - 1].setType("path");
+            buildDoublePath(r, c - 2);
+        }
+        else if (dirs[i] == "RIGHT" && c < this->col - 1 
+                 && canBuildPath(r, c + 1, "RIGHT")
+                 && canBuildPath(r, c + 2, "RIGHT")) {
+            this->map[r][c + 1].setType("path");
+            buildDoublePath(r, c + 2);
         }
     }
 }

@@ -15,6 +15,7 @@ public:
     
     void makeMap();
     void buildPath(int r, int c); 
+    void buildDoublePath(int r, int c); 
     bool canBuildPath(int r, int c, std::string dir); 
 
     // print out the map (for debugging)
