@@ -16,6 +16,8 @@ MazeGenerator::MazeGenerator(int row, int col) :
 Generator(), row(row), col(col) {
     this->wall.setType("wall");
     this->path.setType("path");
+    this->wall.setName("Wall");
+    this->path.setName("Path");
     this->map = new Tile*[row];
     for (int i = 0; i < row; i++) {
         this->map[i] = new Tile[col];

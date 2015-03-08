@@ -20,9 +20,13 @@ public:
     int getAltitude();
     void setAltitude(int new_altitude);
     
+    std::string getName();
+    void setName(std::string new_name);
+    
 private:
     std::string type;
     int altitude;
+    std::string name;
 };
 
 #endif /* TILE_HPP_ */

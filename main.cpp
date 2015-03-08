@@ -27,10 +27,8 @@ int main(int argc, const char *argv[]) {
     MazeGenerator mg(mg_size, mg_size);
     mg.printMap();
 
-    /*
-    CaveGenerator cg(40, 40);
-    cg.makeMap();
+    CaveGenerator cg(30, 30);
     cg.printMap();
-    */
+
     return 0;
 }

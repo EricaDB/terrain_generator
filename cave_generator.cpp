@@ -21,6 +21,12 @@ Generator(), dir(DOWN) {
     this->emerald.setType("emerald");
     this->diamond.setType("diamond");
     
+    this->air.setName("Air");
+    this->rock.setName("Rock");
+    this->ruby.setName("Ruby");
+    this->emerald.setName("Emerald");
+    this->diamond.setName("Diamond");
+    
     this->row = row;
     this->col = col;
     this->map = new Tile*[row];
