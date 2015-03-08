@@ -10,8 +10,6 @@
 #include <algorithm>
 #include <iostream>
 #include <iomanip> // for setw cout formatting
-#include <ctime>   // std::time 
-#include <cstdlib> // std::srand
 
 // Constructor, initialize variables and allocate memory for map
 MazeGenerator::MazeGenerator(int row, int col) :
@@ -23,6 +21,7 @@ Generator(), row(row), col(col) {
         this->map[i] = new Tile[col];
         std::fill(this->map[i], this->map[i] + col, this->wall);
     }
+    srand(time(0));
     makeMap();
 }
 
@@ -117,7 +116,6 @@ void MazeGenerator::printMap() {
                 std::cout << "@"; 
             }
             else { std::cout << " "; }
-            //std::cout << std::setw(4) << std::left << this->map[r][c].getType();
         }
         std::cout << std::endl;
     }
