@@ -7,7 +7,6 @@
 #include <iostream>
 
 int main(int argc, const char *argv[]) {
-    /*
     int tg_size = 20;
     TerrainGenerator tg(tg_size, tg_size);
     tg.smoothMap();
@@ -23,10 +22,10 @@ int main(int argc, const char *argv[]) {
         }
     }
     html.arrayToIndex(tg_size, vec_map);
-    */
 
-    int mg_size = 10;
+    int mg_size = 20;
     MazeGenerator mg(mg_size, mg_size);
+    mg.printMap();
 
     /*
     CaveGenerator cg(40, 40);

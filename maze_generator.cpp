@@ -21,7 +21,7 @@ Generator(), row(row), col(col) {
     this->map = new Tile*[row];
     for (int i = 0; i < row; i++) {
         this->map[i] = new Tile[col];
-        std::fill(this->map[i], this->map[i] + col, this->path);
+        std::fill(this->map[i], this->map[i] + col, this->wall);
     }
     makeMap();
 }
@@ -35,69 +35,76 @@ MazeGenerator::~MazeGenerator() {
 }
 
 void MazeGenerator::makeMap() {
-    buildWall(2, 2); // build first wall at coords 2, 2
+    buildPath(1, 1); // build first path coords 2, 2
+    //create an entrance
+    this->map[1][0].setType("path"); 
+    //create an exit
+    this->map[this->row - 2][this->col - 1].setType("path");
 }
 
-void MazeGenerator::buildWall(int r, int c) {
-    this->map[r][c].setType("wall");
-    std::cout << "building walls" << std::endl;
-    std::srand(unsigned(std::time(0)));
+//helper function
+int myrandom (int i) { 
+    return std::rand() % i; 
+}
+
+void MazeGenerator::buildPath(int r, int c) {
+    this->map[r][c].setType("path");
     std::vector<std::string> dirs = {"UP", "DOWN", "LEFT", "RIGHT"};
-    random_shuffle(dirs.begin(), dirs.end()); 
+    random_shuffle(dirs.begin(), dirs.end(), myrandom); 
     for (int i = 0; i < 4; i++) {
-        if (r > 0 || r < this->row ||
-            c > 0 || c < this->col) {
-            if (dirs[i] == "UP" && canBuildWall(r - 1, c, "UP")) {
-                buildWall(r - 1, c);
+        if (r > 0 || r < this->row - 1 ||
+            c > 0 || c < this->col - 1) {
+            if (dirs[i] == "UP" && canBuildPath(r - 1, c, "UP")) {
+                buildPath(r - 1, c);
             }
-            if (dirs[i] == "DOWN" && canBuildWall(r + 1, c, "DOWN")) {
-                buildWall(r + 1, c);
+            else if (dirs[i] == "DOWN" && canBuildPath(r + 1, c, "DOWN")) {
+                buildPath(r + 1, c);
             }
-            if (dirs[i] == "LEFT" && canBuildWall(r, c - 1, "LEFT")) {
-                buildWall(r, c - 1);
+            else if (dirs[i] == "LEFT" && canBuildPath(r, c - 1, "LEFT")) {
+                buildPath(r, c - 1);
             }
-            if (dirs[i] == "RIGHT" && canBuildWall(r, c + 1, "RIGHT")) {
-                buildWall(r, c + 1);
+            else if (dirs[i] == "RIGHT" && canBuildPath(r, c + 1, "RIGHT")) {
+                buildPath(r, c + 1);
             }
         }
     }
 }
 
-bool MazeGenerator::canBuildWall(int r, int c, std::string dir) { 
-    if (r == 0 || r == this->row ||
-        c == 0 || c == this->col) {
+bool MazeGenerator::canBuildPath(int r, int c, std::string dir) { 
+    if (r == 0 || r == this->row - 1 ||
+        c == 0 || c == this->col - 1) {
         return false;
     }
     if (dir == "UP" && 
-       this->map[r - 1][c - 1].getType() == "path" && 
-       this->map[r - 1][c].getType() == "path" && 
-       this->map[r - 1][c + 1].getType() == "path" && 
-       this->map[r][c - 1].getType() == "path" && 
-       this->map[r][c + 1].getType() == "path") {
+       this->map[r - 1][c - 1].getType() == "wall" && 
+       this->map[r - 1][c].getType() == "wall" && 
+       this->map[r - 1][c + 1].getType() == "wall" && 
+       this->map[r][c - 1].getType() == "wall" && 
+       this->map[r][c + 1].getType() == "wall") {
         return true;
     }
     if (dir == "DOWN" && 
-       this->map[r + 1][c - 1].getType() == "path" && 
-       this->map[r + 1][c].getType() == "path" && 
-       this->map[r + 1][c + 1].getType() == "path" && 
-       this->map[r][c - 1].getType() == "path" && 
-       this->map[r][c + 1].getType() == "path") {
+       this->map[r + 1][c - 1].getType() == "wall" && 
+       this->map[r + 1][c].getType() == "wall" && 
+       this->map[r + 1][c + 1].getType() == "wall" && 
+       this->map[r][c - 1].getType() == "wall" && 
+       this->map[r][c + 1].getType() == "wall") {
         return true;
     }
     if (dir == "LEFT" && 
-       this->map[r][c - 1].getType() == "path" && 
-       this->map[r - 1][c - 1].getType() == "path" && 
-       this->map[r + 1][c - 1].getType() == "path" && 
-       this->map[r - 1][c].getType() == "path" && 
-       this->map[r + 1][c].getType() == "path") {
+       this->map[r][c - 1].getType() == "wall" && 
+       this->map[r - 1][c - 1].getType() == "wall" && 
+       this->map[r + 1][c - 1].getType() == "wall" && 
+       this->map[r - 1][c].getType() == "wall" && 
+       this->map[r + 1][c].getType() == "wall") {
         return true;
     }
     if (dir == "RIGHT" && 
-       this->map[r][c + 1].getType() == "path" && 
-       this->map[r - 1][c + 1].getType() == "path" && 
-       this->map[r + 1][c + 1].getType() == "path" && 
-       this->map[r - 1][c].getType() == "path" && 
-       this->map[r + 1][c].getType() == "path") {
+       this->map[r][c + 1].getType() == "wall" && 
+       this->map[r - 1][c + 1].getType() == "wall" && 
+       this->map[r + 1][c + 1].getType() == "wall" && 
+       this->map[r - 1][c].getType() == "wall" && 
+       this->map[r + 1][c].getType() == "wall") {
         return true;
     }
     return false;
@@ -106,7 +113,11 @@ bool MazeGenerator::canBuildWall(int r, int c, std::string dir) {
 void MazeGenerator::printMap() {
     for (int r = 0; r < this->row; r++) {
         for (int c = 0; c < this->col; c++) {
-            std::cout << std::setw(4) << std::left << this->map[r][c].getType();
+            if (this->map[r][c].getType() == "wall") {
+                std::cout << "@"; 
+            }
+            else { std::cout << " "; }
+            //std::cout << std::setw(4) << std::left << this->map[r][c].getType();
         }
         std::cout << std::endl;
     }
