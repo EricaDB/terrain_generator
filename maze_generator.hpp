@@ -14,10 +14,12 @@ public:
     ~MazeGenerator();
     
     void makeMap();
-    
+    void buildWall(int r, int c); 
+    bool canBuildWall(int r, int c, std::string dir); 
+
     // print out the map (for debugging)
     void printMap();
-    
+     
     Tile **getMap();
     
 private:

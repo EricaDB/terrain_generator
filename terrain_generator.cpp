@@ -3,10 +3,10 @@
  */
 
 #include <random>
-#include <iostream>
 #include <algorithm>  // to fill arrays with characters
-#include <map>
+#include <iostream>
 #include <tuple>
+#include <map>
 
 #include "raffle.hpp" 
 #include "generator.hpp"
@@ -145,7 +145,6 @@ char **TerrainGenerator::getMap() {
 
 //helper function
 std::tuple<int, int> *TerrainGenerator::getArrayOfRandomCoords() {
-    //std::tuple<int, int> coords_arr[this->row * this->col];
     std::tuple<int, int> *coords_arr = 
         new std::tuple<int, int>[this->row * this->col];
     int i = 0;

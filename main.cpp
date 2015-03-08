@@ -1,12 +1,14 @@
 #include "arg_html.hpp"
 #include "generator.hpp"
-#include "terrain_generator.hpp"
 #include "cave_generator.hpp"
+#include "maze_generator.hpp"
+#include "terrain_generator.hpp"
 
 #include <iostream>
 
 int main(int argc, const char *argv[]) {
-    int tg_size = 50; // take this as user input later
+    /*
+    int tg_size = 20;
     TerrainGenerator tg(tg_size, tg_size);
     tg.smoothMap();
     tg.printMap();
@@ -21,6 +23,11 @@ int main(int argc, const char *argv[]) {
         }
     }
     html.arrayToIndex(tg_size, vec_map);
+    */
+
+    int mg_size = 10;
+    MazeGenerator mg(mg_size, mg_size);
+
     /*
     CaveGenerator cg(40, 40);
     cg.makeMap();
