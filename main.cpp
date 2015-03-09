@@ -10,6 +10,7 @@
 #include "cave_generator.hpp"
 #include "terrain_view.hpp"
 #include "maze_view.hpp"
+#include "cave_view.hpp"
 
 template<typename T>
 std::vector<std::vector<T>> arr_to_vec(T **map, int size) {
@@ -39,11 +40,15 @@ int main(int argc, const char *argv[]) {
     MazeView maze_view;
     MazeGenerator mg(mg_size, mg_size);
     Tile **maze = mg.getMap();
-//    mg.printMap();
+    mg.printMap();
     maze_view.arrayToIndex(mg_size, arr_to_vec(maze, mg_size));
 
-    CaveGenerator cg(30, 30);
-//    cg.printMap();
+    int cg_size = 30;
+    CaveView cave_view;
+    CaveGenerator cg(cg_size, cg_size);
+    Tile **cave = cg.getMap();
+    cg.printMap();
+    cave_view.arrayToIndex(cg_size, arr_to_vec(cave, cg_size));
 
     return 0;
 }
