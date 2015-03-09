@@ -43,10 +43,10 @@ TerrainGenerator::~TerrainGenerator() {
 
 void TerrainGenerator::makeMap() {
     //fills map with random tiles
-    Tile terrain[5] = {this->water, this->water, this->valley, this->valley, this->mountain};
+    Tile terrain[6] = {this->water, this->water, this->water, this->valley, this->valley, this->mountain};
     std::random_device rd;
     std::mt19937 mt(rd());
-    std::uniform_int_distribution<int> dist(0, 4);
+    std::uniform_int_distribution<int> dist(0, 5);
     for (int r = 0; r < this->row; r++) {
         for (int c = 0; c < this->col; c++) {
             this->map[r][c] = terrain[dist(mt)];

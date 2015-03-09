@@ -1,7 +1,7 @@
-#include "tile.hpp"
-
 #include <iostream>
 #include <vector>
+
+#include "tile.hpp"
 
 using namespace std;
 

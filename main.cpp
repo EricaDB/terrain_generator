@@ -27,15 +27,15 @@ std::vector<std::vector<T>> arr_to_vec(T **map, int size) {
 int main(int argc, const char *argv[]) {
     int tg_size = 41;
     TerrainGenerator tg(tg_size, tg_size);
-    for (int i = 0; i < 2; i ++) {
+    for (int i = 0; i < 3; i ++) {
         tg.smoothMap();
     }
     tg.printMap();
 
-//    TerrainView terrain_view;
-//    Tile **map = tg.getMap();
-//    //makes html file visualizing map
-//    terrain_view.arrayToIndex(tg_size, arr_to_vec(map, tg_size));
+    TerrainView terrain_view;
+    Tile **map = tg.getMap();
+    //makes html file visualizing map
+    terrain_view.arrayToIndex(tg_size, arr_to_vec(map, tg_size));
 
     int mg_size = 41;
     MazeView maze_view;

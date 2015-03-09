@@ -44,17 +44,16 @@ string MazeView::arrayToTable(int size, vector<vector<Tile>> vec){
 void MazeView::arrayToIndex(int size, vector<vector<Tile>> vec){
 	string style = "<style>td{width:100px;height:100px}.wall{background:black} .path{background:white}</style>";
 	string header = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>Document</title>"+ style +"</head><body>";
-	string footer = "</body></html>";
-	string body = "<table>";
-	for (int r = 0; r < size; r++) {
-		body += "<tr>";      
+    string footer = "</body></html>";
+    string body = "<table>";
+    for (int r = 0; r < size; r++) {
+        body += "<tr>";      
         for (int c = 0; c < size; c++) {
-          if (vec[r][c].getType() == "wall") {
-        	    body += this->wrap("td", '@');	
-          } else { 
-        	    body += this->wrap("td", ' ');	
-          }
-        	//body += this->wrap("td", vec[r][c]);	
+            if (vec[r][c].getType() == "wall") {
+                body += this->wrap("td", '@');	
+            } else { 
+                body += this->wrap("td", ' ');	
+            }
         }  
         body += "</tr>";      
     }
