@@ -27,7 +27,9 @@ std::vector<std::vector<T>> arr_to_vec(T **map, int size) {
 int main(int argc, const char *argv[]) {
     int tg_size = 41;
     TerrainGenerator tg(tg_size, tg_size);
-    tg.smoothMap();
+    for (int i = 0; i < 2; i ++) {
+        tg.smoothMap();
+    }
     tg.printMap();
 
     TerrainView terrain_view;
@@ -39,7 +41,7 @@ int main(int argc, const char *argv[]) {
     MazeView maze_view;
     MazeGenerator mg(mg_size, mg_size);
     Tile **maze = mg.getMap();
-    mg.printMap();
+    //mg.printMap();
     maze_view.arrayToIndex(mg_size, arr_to_vec(maze, mg_size));
 
     CaveGenerator cg(30, 30);
