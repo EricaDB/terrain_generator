@@ -3,8 +3,8 @@
  *
  */
 
-#include "tile.hpp"
 #include <string>
+#include "tile.hpp"
 
 Tile::Tile(std::string type, int altitude) : altitude(altitude), type(type), name(type) {
     // nothing else to do in constructor
@@ -40,6 +40,7 @@ std::string Tile::getName() {
     return this->name;
 }
 
+// overload the < operator for Tile objects
 bool Tile::operator<(const Tile& right_tile) const {
     int comparator = this->type.compare(right_tile.type);
     if (comparator == -1) {

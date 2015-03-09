@@ -7,7 +7,6 @@
 #include <iostream>
 #include <tuple>
 #include <map>
-#include <iomanip> // for setw cout formatting
 
 #include "generator.hpp"
 #include "terrain_generator.hpp"
@@ -42,7 +41,7 @@ TerrainGenerator::~TerrainGenerator() {
 }
 
 void TerrainGenerator::makeMap() {
-    //fills map with random tiles
+    // fills map with random tiles
     Tile terrain[6] = {this->water, this->water, this->water, this->valley, this->valley, this->mountain};
     std::random_device rd;
     std::mt19937 mt(rd());
@@ -68,8 +67,8 @@ void TerrainGenerator::smoothMap() {
         
         majority[this->water.getType()] = 0;
         majority[this->valley.getType()] = 0;
-        majority[this->mountain.getType()] = 0; //hard coded, make dynamic ??
-        //clear out the map each time
+        majority[this->mountain.getType()] = 0; // hard coded, make dynamic ??
+        // clear out the map each time
 
         if (r > 0) {
             majority[this->map[r - 1][c].getType()] += 1;
@@ -94,8 +93,8 @@ void TerrainGenerator::smoothMap() {
                 majority[this->map[r + 1][c + 1].getType()] += 1;
             }
         }
-        //find the char with the biggest count and set
-        //the current char to be that char
+        // find the char with the biggest count and set
+        // the current char to be that char
         max = 0;
         for (auto iterator = majority.begin();
              iterator != majority.end();
@@ -135,7 +134,7 @@ Tile **TerrainGenerator::getMap() {
   return this->map;
 }
 
-//helper function
+// helper function
 std::tuple<int, int> *TerrainGenerator::getArrayOfRandomCoords() {
     std::tuple<int, int> *coords_arr = 
         new std::tuple<int, int>[this->row * this->col];

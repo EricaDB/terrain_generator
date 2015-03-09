@@ -17,23 +17,23 @@ public:
     
     enum Direction { DOWN, RIGHT, UP, LEFT };
     
-    void makeMap();
+    virtual void makeMap();
     void recursiveGen(int row, int col, int len, int width, Direction dir, std::mt19937 mt, int max_rec);
     
-    // print out the map (for debugging)
-    void printMap();
+    // Print out the map (for debugging)
+    virtual void printMap();
     
     Tile **getMap();
     
 private:
-    //the dimensions of the map
+    // The dimensions of the map
     int row;
     int col;
     
     Tile **map;
     enum Direction dir;
     
-    // Tiles for terrain features
+    // Tiles for cave features
     Tile air;
     Tile rock;
     Tile ruby;

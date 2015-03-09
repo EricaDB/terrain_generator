@@ -13,24 +13,24 @@ public:
     MazeGenerator(int row, int col);
     ~MazeGenerator();
     
-    void makeMap();
+    virtual void makeMap();
     void buildPath(int r, int c); 
     void buildDoublePath(int r, int c); 
     bool canBuildPath(int r, int c, std::string dir); 
 
-    // print out the map (for debugging)
-    void printMap();
+    // Print out the map (for debugging)
+    virtual void printMap();
      
     Tile **getMap();
     
 private:
-    //the dimensions of the map
+    // The dimensions of the map
     int row;
     int col;
     
     Tile **map;
     
-    // Tiles for terrain features
+    // Tiles for maze features
     Tile wall;
     Tile path;
 };

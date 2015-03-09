@@ -17,6 +17,9 @@ public:
     
     // Fill the map (which was allocated in the constructor)
     virtual void makeMap() = 0;
+    
+    // Print the map (for debugging)
+    virtual void printMap() = 0;
 };
 
 #endif /* GENERATOR_HPP_ */

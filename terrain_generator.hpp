@@ -11,13 +11,13 @@
 class TerrainGenerator : public Generator {
 public:
     TerrainGenerator(int row, int col);
-    virtual ~TerrainGenerator();
+    ~TerrainGenerator();
     
     virtual void makeMap();
-    virtual void smoothMap();
+    void smoothMap();
 
     // print out the map (for debugging)
-    void printMap();
+    virtual void printMap();
     
     Tile **getMap();
     std::tuple<int, int> *getArrayOfRandomCoords();
@@ -29,7 +29,7 @@ private:
     
     Tile **map;
     
-    // characters for terrain features
+    // Tile objects for terrain features
     Tile mountain;
     Tile water;
     Tile valley;

@@ -63,7 +63,7 @@ void CaveGenerator::recursiveGen(int row, int col, int cavern_len, int cavern_wi
                         this->map[i][j] = this->air;
                         if (new_cave_chance(mt) == 1 && max_rec > 0) {
                             max_rec -= 1;
-                            recursiveGen(i, j, len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, max_rec); // cast direction
+                            recursiveGen(i, j, len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, max_rec);
                         }
                     }
                 }
@@ -73,7 +73,7 @@ void CaveGenerator::recursiveGen(int row, int col, int cavern_len, int cavern_wi
                         this->map[i][j] = this->air;
                         if (new_cave_chance(mt) == 1 && max_rec > 0) {
                             max_rec -= 1;
-                            recursiveGen(i, j, len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, max_rec); // cast direction
+                            recursiveGen(i, j, len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, max_rec);
                         }
                     }
                 }
@@ -88,7 +88,7 @@ void CaveGenerator::recursiveGen(int row, int col, int cavern_len, int cavern_wi
                         this->map[i][j] = this->air;
                         if (new_cave_chance(mt) == 1 && max_rec > 0) {
                             max_rec -= 1;
-                            recursiveGen(i, j, len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, max_rec); // cast direction
+                            recursiveGen(i, j, len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, max_rec);
                         }
                     }
                 }
@@ -98,7 +98,7 @@ void CaveGenerator::recursiveGen(int row, int col, int cavern_len, int cavern_wi
                         this->map[i][j] = this->air;
                         if (new_cave_chance(mt) == 1 && max_rec > 0) {
                             max_rec -= 1;
-                            recursiveGen(i, j, len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, max_rec); // cast direction
+                            recursiveGen(i, j, len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, max_rec);
                         }
                     }
                 }
@@ -113,7 +113,7 @@ void CaveGenerator::recursiveGen(int row, int col, int cavern_len, int cavern_wi
                         this->map[j][i] = this->air;
                         if (new_cave_chance(mt) == 1 && max_rec > 0) {
                             max_rec -= 1;
-                            recursiveGen(j, i, len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, max_rec); // cast direction
+                            recursiveGen(j, i, len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, max_rec);
                         }
                     }
                 }
@@ -123,7 +123,7 @@ void CaveGenerator::recursiveGen(int row, int col, int cavern_len, int cavern_wi
                         this->map[j][i] = this->air;
                         if (new_cave_chance(mt) == 1 && max_rec > 0) {
                             max_rec -= 1;
-                            recursiveGen(j, i, len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, max_rec); // cast direction
+                            recursiveGen(j, i, len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, max_rec);
                         }
                     }
                 }
@@ -138,7 +138,7 @@ void CaveGenerator::recursiveGen(int row, int col, int cavern_len, int cavern_wi
                         this->map[j][i] = this->air;
                         if (new_cave_chance(mt) == 1 && max_rec > 0) {
                             max_rec -= 1;
-                            recursiveGen(j, i, len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, max_rec); // cast direction
+                            recursiveGen(j, i, len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, max_rec);
                         }
                     }
                 }
@@ -148,7 +148,7 @@ void CaveGenerator::recursiveGen(int row, int col, int cavern_len, int cavern_wi
                         this->map[j][i] = this->air;
                         if (new_cave_chance(mt) == 1 && max_rec > 0) {
                             max_rec -= 1;
-                            recursiveGen(j, i, len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, max_rec); // cast direction
+                            recursiveGen(j, i, len(mt), width(mt), (CaveGenerator::Direction)direction(mt), mt, max_rec);
                         }
                     }
                 }

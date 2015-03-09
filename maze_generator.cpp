@@ -5,7 +5,6 @@
 #include <random>
 #include <algorithm>
 #include <iostream>
-#include <iomanip> // for setw cout formatting
 
 #include "generator.hpp"
 #include "tile.hpp"
@@ -37,18 +36,18 @@ MazeGenerator::~MazeGenerator() {
 
 void MazeGenerator::makeMap() {
     buildDoublePath(1, 1); // build first path coords 1, 1
-    //create an entrance
+    // create an entrance
     this->map[1][0].setType("path"); 
-    //create an exit
+    // create an exit
     this->map[this->row - 2][this->col - 1].setType("path");
 }
 
-//helper function
+// helper function
 int myrandom (int i) { 
     return std::rand() % i; 
 }
 
-//builds maze, drawback: no guaranteed exit
+// builds maze, drawback: no guaranteed exit
 void MazeGenerator::buildPath(int r, int c) {
     this->map[r][c].setType("path");
     std::vector<std::string> dirs = {"UP", "DOWN", "LEFT", "RIGHT"};
@@ -72,7 +71,7 @@ void MazeGenerator::buildPath(int r, int c) {
     }
 }
 
-//builds maze, drawback: only looks good if cave has dimensions of odd number
+// builds maze, drawback: only looks good if cave has dimensions of odd number
 void MazeGenerator::buildDoublePath(int r, int c) {
     this->map[r][c].setType("path");
     std::vector<std::string> dirs = {"UP", "DOWN", "LEFT", "RIGHT"};
