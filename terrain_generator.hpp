@@ -6,17 +6,20 @@
 #define TERRAIN_GENERATOR_HPP_
 
 #include "generator.hpp"
+#include "tile.hpp"
 
 class TerrainGenerator : public Generator {
 public:
     TerrainGenerator(int row, int col);
     virtual ~TerrainGenerator();
+    
     virtual void makeMap();
     virtual void smoothMap();
 
     // print out the map (for debugging)
     void printMap();
-    char **getMap();    
+    
+    Tile **getMap();
     std::tuple<int, int> *getArrayOfRandomCoords();
 
 private:
@@ -24,12 +27,12 @@ private:
     int row;
     int col;
     
-    char **map;
+    Tile **map;
     
     // characters for terrain features
-    char mountain;
-    char water;
-    char valley;
+    Tile mountain;
+    Tile water;
+    Tile valley;
 };
 
 #endif /* TERRAIN_GENERATOR_HPP_ */

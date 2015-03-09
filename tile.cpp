@@ -14,7 +14,7 @@ Tile::Tile() : altitude(0), type("NONE"), name("") {
     // nothing else to do in constructor
 }
 
-Tile::~Tile() {};
+Tile::~Tile() {}
 
 void Tile::setType(std::string new_type) {
     this->type = new_type;
@@ -38,4 +38,13 @@ void Tile::setName(std::string new_name) {
 
 std::string Tile::getName() {
     return this->name;
+}
+
+bool Tile::operator<(const Tile& right_tile) const {
+    int comparator = this->type.compare(right_tile.type);
+    if (comparator == -1) {
+        return true;
+    } else {
+        return false;
+    }
 }

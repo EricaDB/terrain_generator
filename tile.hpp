@@ -23,6 +23,9 @@ public:
     std::string getName();
     void setName(std::string new_name);
     
+    // overload the < operator for Tile objects
+    bool operator<(const Tile& right_tile) const;
+    
 private:
     std::string type;
     int altitude;

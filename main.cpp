@@ -32,20 +32,20 @@ int main(int argc, const char *argv[]) {
     }
     tg.printMap();
 
-    TerrainView terrain_view;
-    char **map = tg.getMap();
-    //makes html file visualizing map
-    terrain_view.arrayToIndex(tg_size, arr_to_vec(map, tg_size));
+//    TerrainView terrain_view;
+//    Tile **map = tg.getMap();
+//    //makes html file visualizing map
+//    terrain_view.arrayToIndex(tg_size, arr_to_vec(map, tg_size));
 
     int mg_size = 41;
     MazeView maze_view;
     MazeGenerator mg(mg_size, mg_size);
     Tile **maze = mg.getMap();
-    //mg.printMap();
+//    mg.printMap();
     maze_view.arrayToIndex(mg_size, arr_to_vec(maze, mg_size));
 
     CaveGenerator cg(30, 30);
-    //cg.printMap();
+//    cg.printMap();
 
     return 0;
 }
