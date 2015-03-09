@@ -1,11 +1,15 @@
-#include "arg_html.hpp"
-#include "maze_view.hpp"
-#include "generator.hpp"
-#include "cave_generator.hpp"
-#include "maze_generator.hpp"
-#include "terrain_generator.hpp"
+/*
+ * main.cpp
+ */
 
 #include <iostream>
+
+#include "generator.hpp"
+#include "terrain_generator.hpp"
+#include "maze_generator.hpp"
+#include "cave_generator.hpp"
+#include "terrain_view.hpp"
+#include "maze_view.hpp"
 
 template<typename T>
 std::vector<std::vector<T>> arr_to_vec(T **map, int size) {

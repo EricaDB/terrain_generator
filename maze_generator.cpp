@@ -2,14 +2,14 @@
  * maze_generator.cpp
  */
 
-#include "generator.hpp"
-#include "tile.hpp"
-#include "maze_generator.hpp"
-
 #include <random>
 #include <algorithm>
 #include <iostream>
 #include <iomanip> // for setw cout formatting
+
+#include "generator.hpp"
+#include "tile.hpp"
+#include "maze_generator.hpp"
 
 // Constructor, initialize variables and allocate memory for map
 MazeGenerator::MazeGenerator(int row, int col) :
