@@ -1,6 +1,3 @@
-#include "maze_view.hpp"
-#include "tile.hpp"
-
 #include <iostream>
 #include <iomanip>
 #include <map>
@@ -8,6 +5,9 @@
 #include <stdlib.h>
 #include <utility>
 #include <vector>
+
+#include "maze_view.hpp"
+#include "tile.hpp"
 
 using namespace std;
 
@@ -25,20 +25,20 @@ string MazeView::wrap(string tag, char content){
 }
 
 string MazeView::arrayToTable(int size, vector<vector<Tile>> vec){
-	string html = "<table>";
-	for (int r = 0; r < size; r++) {
-		html += "<tr>";      
-        for (int c = 0; c < size; c++) {
-          if (vec[r][c].getType() == "wall") {
-        	    html += this->wrap("td", '@');	
-          } else { 
-        	    html += this->wrap("td", ' ');	
-          }
-        }  
-        html += "</tr>";      
-    }
-    html += "</table>";
-	return html;
+    string html = "<table>";
+    for (int r = 0; r < size; r++) {
+        html += "<tr>";      
+            for (int c = 0; c < size; c++) {
+              if (vec[r][c].getType() == "wall") {
+                  html += this->wrap("td", '@');	
+              } else { 
+                  html += this->wrap("td", ' ');	
+              }
+            }  
+            html += "</tr>";      
+        }
+        html += "</table>";
+    return html;
 }
 
 void MazeView::arrayToIndex(int size, vector<vector<Tile>> vec){

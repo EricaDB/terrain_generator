@@ -30,10 +30,10 @@ int main(int argc, const char *argv[]) {
     tg.smoothMap();
     tg.printMap();
 
-    ArgHtml html;
+    TerrainView terrain_view;
     char **map = tg.getMap();
     //makes html file visualizing map
-    html.arrayToIndex(tg_size, arr_to_vec(map, tg_size));
+    terrain_view.arrayToIndex(tg_size, arr_to_vec(map, tg_size));
 
     int mg_size = 41;
     MazeView maze_view;

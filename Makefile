@@ -6,7 +6,7 @@ CXXFLAGS = -g -std=c++11
 
 all: main
 
-MAP_OBJECTS = terrain_generator.o main.o raffle.o cave_generator.o arg_html.o tile.o maze_generator.o maze_view.o
+MAP_OBJECTS = main.o tile.o raffle.o terrain_generator.o maze_generator.o cave_generator.o terrain_view.o maze_view.o
 main: $(MAP_OBJECTS)
 	$(CXX) -o $@ $(MAP_OBJECTS)
 

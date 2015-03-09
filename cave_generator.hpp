@@ -5,8 +5,9 @@
 #ifndef CAVE_GENERATOR_HPP_
 #define CAVE_GENERATOR_HPP_
 
-#include "generator.hpp"
 #include <random>
+
+#include "generator.hpp"
 #include "tile.hpp"
 
 class CaveGenerator : public Generator {
