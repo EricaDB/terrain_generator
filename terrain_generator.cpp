@@ -13,7 +13,10 @@
 #include "tile.hpp"
 
 // Constructor, initialize variables and allocate memory for map
-TerrainGenerator::TerrainGenerator(int row, int col) : Generator() {
+TerrainGenerator::TerrainGenerator(
+    int row, int col, int smoothness, 
+    int water_amount, int valley_amount, int mountains_amount
+    ) : Generator() {
     this->mountain.setType("mountain");
     this->water.setType("water");
     this->valley.setType("valley");
@@ -24,12 +27,19 @@ TerrainGenerator::TerrainGenerator(int row, int col) : Generator() {
         
     this->row = row;
     this->col = col;
+    this->water_amount = water_amount;
+    this->valley_amount = valley_amount;
+    this->mountains_amount = mountains_amount;
+
     this->map = new Tile*[row];
     for (int i = 0; i < row; i++) {
         this->map[i] = new Tile[col];
         std::fill(this->map[i], this->map[i] + col, this->water);
     }
     makeMap();
+    for (int i = 0; i < smoothness; i++) {
+        smoothMap();
+    }
 }
 
 // Destructor, free the map memory
@@ -41,11 +51,30 @@ TerrainGenerator::~TerrainGenerator() {
 }
 
 void TerrainGenerator::makeMap() {
-    // fills map with random tiles
-    Tile terrain[6] = {this->water, this->water, this->water, this->valley, this->valley, this->mountain};
+    //fills map with random tiles
+    int array_len = this->water_amount + 
+                    this->valley_amount + 
+                    this->mountains_amount;
+    Tile terrain[array_len];
+
+    int i = 0;
+    while (i < array_len) {
+        
+        if (i < this->water_amount) {
+            terrain[i] = this->water; 
+        }
+        else if (i < this->water_amount + this->valley_amount) {
+            terrain[i] = this->valley; 
+        }
+        else if (i < array_len) {
+            terrain[i] = this->mountain; 
+        }
+        i++;
+    }
+
     std::random_device rd;
     std::mt19937 mt(rd());
-    std::uniform_int_distribution<int> dist(0, 5);
+    std::uniform_int_distribution<int> dist(0, array_len - 1);
     for (int r = 0; r < this->row; r++) {
         for (int c = 0; c < this->col; c++) {
             this->map[r][c] = terrain[dist(mt)];
@@ -67,8 +96,8 @@ void TerrainGenerator::smoothMap() {
         
         majority[this->water.getType()] = 0;
         majority[this->valley.getType()] = 0;
-        majority[this->mountain.getType()] = 0; // hard coded, make dynamic ??
-        // clear out the map each time
+        majority[this->mountain.getType()] = 0;
+        //clear out the map each time
 
         if (r > 0) {
             majority[this->map[r - 1][c].getType()] += 1;

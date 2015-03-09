@@ -10,8 +10,9 @@
 
 class TerrainGenerator : public Generator {
 public:
-    TerrainGenerator(int row, int col);
-    ~TerrainGenerator();
+    TerrainGenerator(int row, int col, int smoothness,
+                     int water, int valley, int mountains);
+    virtual ~TerrainGenerator();
     
     virtual void makeMap();
     void smoothMap();
@@ -26,7 +27,11 @@ private:
     //the dimensions of the map
     int row;
     int col;
-    
+
+    int water_amount; //proportion of water on map
+    int valley_amount;
+    int mountains_amount;
+
     Tile **map;
     
     // Tile objects for terrain features

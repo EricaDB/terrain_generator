@@ -25,11 +25,9 @@ std::vector<std::vector<T>> arr_to_vec(T **map, int size) {
 }
 
 int main(int argc, const char *argv[]) {
-    int tg_size = 41;
-    TerrainGenerator tg(tg_size, tg_size);
-    for (int i = 0; i < 3; i ++) {
-        tg.smoothMap();
-    }
+    int tg_size = 50;
+    int smoothness = 2;
+    TerrainGenerator tg(tg_size, tg_size, smoothness, 3, 2, 1);
     tg.printMap();
 
     TerrainView terrain_view;

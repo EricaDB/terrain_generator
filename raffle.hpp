@@ -18,4 +18,4 @@ private:
     std::map<char, int> options;
 };
 
-#endif 
+#endif
