@@ -22,7 +22,7 @@ string TerrainView::wrap(string tag, char content){
     classMap.insert(pair<char, string>('^', "moutain") );
     classMap.insert(pair<char, string>('.', "plains") );
     classMap.insert(pair<char, string>(' ', "ocean") );
-    return "<" + tag + " class='" + classMap.find(content)->second + "'>" + content + "</" + tag + ">";
+    return "<" + tag + " class='" + classMap.find(content)->second + "'>" + "</" + tag + ">";
 }
 
 string TerrainView::arrayToTable(int size, vector<vector<Tile>> vec){

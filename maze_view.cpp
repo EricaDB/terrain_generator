@@ -21,7 +21,7 @@ string MazeView::wrap(string tag, char content){
 	map<char, string> classMap;
 	classMap.insert(pair<char, string>('@', "wall") );
 	classMap.insert(pair<char, string>(' ', "path") );
-	return "<" + tag + " class='" + classMap.find(content)->second + "'>" + content + "</" + tag + ">";
+	return "<" + tag + " class='" + classMap.find(content)->second + "'>" + "</" + tag + ">";
 }
 
 string MazeView::arrayToTable(int size, vector<vector<Tile>> vec){

@@ -43,7 +43,7 @@ int main(int argc, const char *argv[]) {
     mg.printMap();
     maze_view.arrayToIndex(mg_size, arr_to_vec(maze, mg_size));
 
-    int cg_size = 30;
+    int cg_size = 100;
     CaveView cave_view;
     CaveGenerator cg(cg_size, cg_size);
     Tile **cave = cg.getMap();

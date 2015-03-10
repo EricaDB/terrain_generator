@@ -24,7 +24,7 @@ string CaveView::wrap(string tag, char content){
     classMap.insert(pair<char, string>('r', "ruby") );
     classMap.insert(pair<char, string>('e', "emerald") );
     classMap.insert(pair<char, string>('d', "diamond") );
-    return "<" + tag + " class='" + classMap.find(content)->second + "'>" + content + "</" + tag + ">";
+    return "<" + tag + " class='" + classMap.find(content)->second + "'>" + "</" + tag + ">";
 }
 
 string CaveView::arrayToTable(int size, vector<vector<Tile>> vec){
