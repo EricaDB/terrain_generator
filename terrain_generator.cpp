@@ -88,8 +88,6 @@ void TerrainGenerator::smoothMap() {
     std::string max_tile;
     std::tuple<int, int> *coords_arr= getArrayOfRandomCoords();
     int r, c;
-    //for (int r = 0; r < this->row; r++) {
-        //for (int c = 0; c < this->col; c++) {
     for (int a = 0; a < this->row * this->col - 1; a++) {
         r = std::get<0>(coords_arr[a]);
         c = std::get<1>(coords_arr[a]);
@@ -115,6 +113,7 @@ void TerrainGenerator::smoothMap() {
             majority[this->map[r][c + 1].getType()] += 1;
         }
         if (r + 1 < this->row) {
+            majority[this->map[r + 1][c].getType()] += 1;
             if (c > 0) {
                 majority[this->map[r + 1][c - 1].getType()] += 1;
             }
