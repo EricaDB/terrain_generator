@@ -1,5 +1,5 @@
 // compilation command
-// EMCC_FAST_COMPILER=0 emcc --bind -o cave.js cave_bind.cpp
+// EMCC_FAST_COMPILER=0 emcc -O3 --bind -o cave.js cave_bind.cpp
 // requires 
 // 		1: local copy of emcc and dependencies 
 // 		2: linking of source script in bash_profile
@@ -23,7 +23,7 @@ std::vector<std::vector<T>> arr_to_vec(T **map, int size) {
     return vec_map;
 }
 
-std::string lerp(std::string size) {
+std::string cave(std::string size) {
 	std::string::size_type sz;
 	int mapSize = std::stoi (size,&sz);
 
@@ -34,7 +34,7 @@ std::string lerp(std::string size) {
 }
 
 EMSCRIPTEN_BINDINGS(my_module) {
-    emscripten::function("lerp", &lerp);
+    emscripten::function("cave", &cave);
 }
 
 

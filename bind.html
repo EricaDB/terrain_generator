@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-  <script src="cave.js"></script>
+  <script src="js/cave.js"></script>
   <style>
 	td{width:10px;height:10px}.rock{background:navy} .air{background:white} .ruby{background:red} .emerald{background:green} .diamond{background:teal}
 	table
@@ -24,7 +24,7 @@
   <script>
   	// takes size from dom and requests map from c++ module
 	function generateMap(size){
-		map = Module.lerp(size);
+		map = Module.cave(size);
 		console.log(map);
 		elem = document.getElementById("map");
 		elem.innerHTML = map;
