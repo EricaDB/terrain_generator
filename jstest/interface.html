@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Hello World !</title>
+        <script src="a.out.js"></script>
+        <script>
+             var strLenFunction =  Module.cwrap('stringLen', 'number', ['string']);
+             var stringVal = Module.cwrap('stringVal', 'number', ['number', 'number'] );
+             var len1 = strLenFunction("hi.");
+             var val = stringVal(5,7)
+             // alert(Pointer_stringify(val));
+
+             elem = document.createElement("div");
+             elem.id = 'myID';
+             elem.innerHTML = Pointer_stringify(val);
+
+             alert(len1);
+
+        </script>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        document.body.insertBefore(elem,document.body.childNodes[0]);
+    </script>
+</html>

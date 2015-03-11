@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <script src="cave.js"></script>
+  <style>
+	td{width:10px;height:10px}.rock{background:navy} .air{background:white} .ruby{background:red} .emerald{background:green} .diamond{background:teal}
+	table
+	{
+	    table-layout: fixed;
+	    width: 100px;
+	}
+	td
+	{
+	    overflow: hidden;
+	}
+  </style>
+  <body>
+  	<h1>Cave gen</h1>
+  	<form onsubmit='return generateMap(document.getElementById("mapsize").value);'>
+  		<input id="mapsize" type="number" min="0" max="100" value="16">
+  		<input type="submit">
+  	</form>
+  	<div id="map"></div>
+  </body>
+  <script>
+  	// takes size from dom and requests map from c++ module
+	function generateMap(size){
+		map = Module.lerp(size);
+		console.log(map);
+		elem = document.getElementById("map");
+		elem.innerHTML = map;
+		// prevents page from reloading
+		return false;
+	}
+  </script>
+</html>

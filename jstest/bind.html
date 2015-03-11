@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+  <script src="interface.js"></script>
+  <script>
+    var instance = new Module.MyClass(10, "hello");
+	instance.incrementY();
+	instance.x; // 11
+	console.log(instance.x);
+	instance.x = 20; // 20
+	console.log(instance.x);
+	Module.MyClass.getStringFromInstance(instance); // "hello"
+	instance.delete();
+  </script>
+</html>
