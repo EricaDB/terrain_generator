@@ -39,7 +39,7 @@ string TerrainView::arrayToTable(int size, vector<vector<Tile>> vec){
 }
 
 void TerrainView::arrayToIndex(int size, vector<vector<Tile>> vec){
-    string style = "<style>td{width:10px;height:10px}.moutain{background:brown} .plains{background:#4CB649} .ocean{background:#4CC1E7}</style>";
+    string style = "<style>td{width:100px;height:100px}.moutain{background:brown} .plains{background:#4CB649} .ocean{background:#4CC1E7}</style>";
     string header = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>Document</title>"+ style +"</head><body>";
     string footer = "</body></html>";
     string body = "<table>";
