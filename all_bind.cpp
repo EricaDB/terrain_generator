@@ -52,10 +52,11 @@ std::string terrain(std::string size) {
     std::string::size_type sz;
     int mapSize = std::stoi (size,&sz);
 
-    CaveView cave_view;
-    CaveGenerator cg(mapSize, mapSize);
-    Tile **cave = cg.getMap();
-    return cave_view.arrayToTable(mapSize, arr_to_vec(cave, mapSize));
+    TerrainView terrain_view;
+    int smoothness = 2;
+    TerrainGenerator tg(mapSize, mapSize, smoothness, 3, 2, 1);
+    Tile **map = tg.getMap();
+    return terrain_view.arrayToTable(mapSize, arr_to_vec(map, mapSize));
 }
 
 EMSCRIPTEN_BINDINGS(my_module) {
