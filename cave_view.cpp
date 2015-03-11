@@ -51,7 +51,7 @@ string CaveView::arrayToTable(int size, vector<vector<Tile>> vec){
 }
 
 void CaveView::arrayToIndex(int size, vector<vector<Tile>> vec){
-    string style = "<style>td{width:100px;height:100px}.rock{background:navy} .air{background:white} .ruby{background:red} .emerald{background:green} .diamond{background:teal}</style>";
+    string style = "<style>td{width:100px;height:100px}.rock{background:navy} .air{background:white} .ruby{background:red} .emerald{background:green} .diamond{background:turquoise}</style>";
     string header = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>Document</title>"+ style +"</head><body>";
     string footer = "</body></html>";
     string body = "<table>";
