@@ -176,7 +176,7 @@ void CaveGenerator::makeMap() {
     std::uniform_int_distribution<int> emerald_chance(0, 74);
     std::uniform_int_distribution<int> diamond_chance(0, 99);
     
-    // fill cave with some gems
+    // fill cave with some gems and smooth map
     for (int i = 0; i < this->row - 1; i++) {
         for (int j = 0; j < this->col - 1; j++) {
             if (this->map[i][j].getType() == "rock") {
@@ -187,7 +187,20 @@ void CaveGenerator::makeMap() {
                 } else if (ruby_chance(mt) == 0) {
                     this->map[i][j] = this->ruby;
                 }
+                smoothMap(i, j);
             }
+        }
+    }
+}
+
+void CaveGenerator::smoothMap(int row, int col) {
+    if ((row > 0 && row < this->row - 1) && (col > 0 && col < this->col - 1)) {
+        if (this->map[row - 1][col].getType() == "air" &&
+            this->map[row + 1][col].getType() == "air" &&
+            this->map[row][col - 1].getType() == "air" &&
+            this->map[row][col + 1].getType() == "air") {
+            this->map[row][col] = this->air;
+            std::cout << "smoothing at " << row << "," << col << std::endl;
         }
     }
 }
