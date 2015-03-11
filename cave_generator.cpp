@@ -200,7 +200,6 @@ void CaveGenerator::smoothMap(int row, int col) {
             this->map[row][col - 1].getType() == "air" &&
             this->map[row][col + 1].getType() == "air") {
             this->map[row][col] = this->air;
-            std::cout << "smoothing at " << row << "," << col << std::endl;
         }
     }
 }
