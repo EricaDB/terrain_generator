@@ -56,6 +56,7 @@ void TerrainGenerator::makeMap() {
                     this->valley_amount + 
                     this->mountains_amount;
     Tile terrain[array_len];
+    // terrain = new Tile*[array_len];
 
     int i = 0;
     while (i < array_len) {

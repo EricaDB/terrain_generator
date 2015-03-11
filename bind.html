@@ -1,8 +1,10 @@
 <!doctype html>
 <html>
-  <script src="js/cave.js"></script>
+  <script src="js/all.js"></script>
   <style>
-	td{width:10px;height:10px}.rock{background:navy} .air{background:white} .ruby{background:red} .emerald{background:green} .diamond{background:teal}
+	td{width:10px;height:10px}
+	.rock{background:navy} .air{background:white} .ruby{background:red} .emerald{background:green} .diamond{background:teal}
+	.wall{background:black} .path{background:white}
 	table
 	{
 	    table-layout: fixed;
@@ -14,20 +16,28 @@
 	}
   </style>
   <body>
-  	<h1>Cave gen</h1>
-  	<form onsubmit='return generateMap(document.getElementById("mapsize").value);'>
-  		<input id="mapsize" type="number" min="0" max="100" value="16">
+  	<h1>Map generator</h1>
+  	<form onsubmit='return generateMap(document.getElementById("mapsize").value, document.getElementById("mapType").options[document.getElementById("mapType").selectedIndex].value);'>
+  		<select name="mapType" id="mapType">
+  			<option value="cave">cave</option>
+  			<option value="maze">maze</option>
+  			<option value="terrain">terrain</option>
+  		</select>
+  		<input id="mapsize" type="number" min="0" max="310" value="16">
   		<input type="submit">
   	</form>
   	<div id="map"></div>
   </body>
   <script>
   	// takes size from dom and requests map from c++ module
-	function generateMap(size){
-		map = Module.cave(size);
+	function generateMap(size, type){
+		// generates map
+		map = Module[type](size);
 		console.log(map);
+		// insert map intodom
 		elem = document.getElementById("map");
 		elem.innerHTML = map;
+		
 		// prevents page from reloading
 		return false;
 	}

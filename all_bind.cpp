@@ -10,6 +10,10 @@
 #include "tile.cpp"
 #include "cave_generator.cpp"
 #include "cave_view.cpp"
+#include "maze_generator.cpp"
+#include "maze_view.cpp"
+#include "terrain_generator.cpp"
+#include "terrain_view.cpp"
 
 template<typename T>
 std::vector<std::vector<T>> arr_to_vec(T **map, int size) {
@@ -34,8 +38,30 @@ std::string cave(std::string size) {
     return cave_view.arrayToTable(mapSize, arr_to_vec(cave, mapSize));
 }
 
+std::string maze(std::string size) {
+    std::string::size_type sz;
+    int mapSize = std::stoi (size,&sz);
+
+    MazeView maze_view;
+    MazeGenerator mg(mapSize, mapSize);
+    Tile **maze = mg.getMap();
+    return maze_view.arrayToTable(mapSize, arr_to_vec(maze, mapSize));
+}
+
+std::string terrain(std::string size) {
+    std::string::size_type sz;
+    int mapSize = std::stoi (size,&sz);
+
+    CaveView cave_view;
+    CaveGenerator cg(mapSize, mapSize);
+    Tile **cave = cg.getMap();
+    return cave_view.arrayToTable(mapSize, arr_to_vec(cave, mapSize));
+}
+
 EMSCRIPTEN_BINDINGS(my_module) {
     emscripten::function("cave", &cave);
+    emscripten::function("maze", &maze);
+    emscripten::function("terrain", &terrain);
 }
 
 
