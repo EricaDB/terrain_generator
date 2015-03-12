@@ -1,0 +1,14 @@
+Week 10 meeting 3/9/15
+
+Attendants: 
+   Erica Johnson, Sage Berg, Nathan Pointer
+
+Summary:
+    - Had a group code session together.
+    - Discussed style changes to make.
+    - Worked on the last parts of the project to finish
+    - Debugged view problem with the terrain generator (on the 
+      web page it was only displaying water and no valley or
+      mountains).
+
+Approximate duration: ~ 1 hr 30 min
