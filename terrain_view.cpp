@@ -28,11 +28,19 @@ string TerrainView::wrap(string tag, char content){
 string TerrainView::arrayToTable(int size, vector<vector<Tile>> vec){
 	string html = "<table>";
 	for (int r = 0; r < size; r++) {
-		html += "<tr>";      
+        html += "<tr>";      
         for (int c = 0; c < size; c++) {
-        	html += this->wrap("td", ' ');	
+            if (vec[r][c].getType() == "valley") {
+                html += this->wrap("td", '.');  
+            }
+            else if (vec[r][c].getType() == "mountain") {
+                html += this->wrap("td", '^');  
+            } else { 
+                html += this->wrap("td", ' ');  
+            }
+        //html += this->wrap("td", vec[r][c].getType());    
         }  
-        html += "</tr>";
+    html += "</tr>";      
     }
     html += "</table>";
 	return html;

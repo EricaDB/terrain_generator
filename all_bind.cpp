@@ -54,8 +54,12 @@ std::string terrain(std::string size) {
 
     TerrainView terrain_view;
     int smoothness = 2;
-    TerrainGenerator tg(mapSize, mapSize, smoothness, 3, 2, 1);
+    int water = 3;
+    int valley =2;
+    int moutain = 1;
+    TerrainGenerator tg(mapSize, mapSize, smoothness, water, valley, moutain);
     Tile **map = tg.getMap();
+
     return terrain_view.arrayToTable(mapSize, arr_to_vec(map, mapSize));
 }
 

@@ -7,6 +7,7 @@
 #include <iostream>
 #include <tuple>
 #include <map>
+#include <vector>
 
 #include "generator.hpp"
 #include "terrain_generator.hpp"
@@ -34,7 +35,7 @@ TerrainGenerator::TerrainGenerator(
     this->map = new Tile*[row];
     for (int i = 0; i < row; i++) {
         this->map[i] = new Tile[col];
-        std::fill(this->map[i], this->map[i] + col, this->water);
+        std::fill(this->map[i], this->map[i] + col, this->mountain);
     }
     makeMap();
     for (int i = 0; i < smoothness; i++) {
@@ -55,20 +56,19 @@ void TerrainGenerator::makeMap() {
     int array_len = this->water_amount + 
                     this->valley_amount + 
                     this->mountains_amount;
-    // Tile terrain[10];
-    Tile terrain[6];
+    std::vector<Tile> terrain;
 
     int i = 0;
     while (i < array_len) {
         
         if (i < this->water_amount) {
-            terrain[i] = this->water; 
+            terrain.push_back(this->water); 
         }
         else if (i < this->water_amount + this->valley_amount) {
-            terrain[i] = this->valley; 
+            terrain.push_back(this->valley); 
         }
         else if (i < array_len) {
-            terrain[i] = this->mountain; 
+            terrain.push_back(this->mountain); 
         }
         i++;
     }

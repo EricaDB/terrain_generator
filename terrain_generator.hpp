@@ -17,6 +17,10 @@ public:
     virtual void makeMap();
     void smoothMap();
 
+    int water_amount; //proportion of water on map
+    int valley_amount;
+    int mountains_amount;
+
     // print out the map (for debugging)
     virtual void printMap();
     
@@ -28,9 +32,7 @@ private:
     int row;
     int col;
 
-    int water_amount; //proportion of water on map
-    int valley_amount;
-    int mountains_amount;
+    
 
     Tile **map;
     
