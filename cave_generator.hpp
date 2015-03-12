@@ -19,6 +19,7 @@ public:
     
     virtual void makeMap();
     void recursiveGen(int row, int col, int len, int width, Direction dir, std::mt19937 mt, int max_rec);
+    void smoothMap(int row, int col);
     
     // Print out the map (for debugging)
     virtual void printMap();
