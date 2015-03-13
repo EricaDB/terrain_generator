@@ -43,12 +43,14 @@ int main(int argc, const char *argv[]) {
     mg.printMap();
     maze_view.arrayToIndex(mg_size, arr_to_vec(maze, mg_size));
 
-    int cg_size = 60;
+    int cg_size = 30;
     CaveView cave_view;
     CaveGenerator cg(cg_size, cg_size);
     Tile **cave = cg.getMap();
     cg.printMap();
     cave_view.arrayToIndex(cg_size, arr_to_vec(cave, cg_size));
+    
+    std::cout << std::endl << "Open bind.html to view the webpage." << std::endl;
 
     return 0;
 }
